@@ -9,7 +9,7 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
-django==5.1
+Django==5.1
 djangorestframework==3.15.2
 editdistance==0.8.1
 environs==11.0.0
