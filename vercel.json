@@ -1,23 +1,26 @@
 {
-    "builds": [
-      {
-        "src": "TokenizerA/wsgi.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "50mb",
-          "runtime": "python3.12.1"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "TokenizerA/wsgi.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles_build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "TokenizerA/wsgi.py"
-      }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "TokenizerA.settings",
-      "PYTHONUNBUFFERED": "1"
     }
-  }
-  
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "TokenizerA/wsgi.py"
+    }
+  ]
+}
